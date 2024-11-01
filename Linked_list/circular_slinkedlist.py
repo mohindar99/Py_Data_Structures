@@ -183,16 +183,12 @@ class CSLinkedlist:
         self.length-=1
         return popped_node
 
+    # Used to remove all the element of the circular linked list
     def delete_all(self):
         if self.length==0 : return
         self.tail.next=None
         self.head=self.tail=None
         self.length=0
-
-
-
-
-
 
 
 cslinkedlist1=CSLinkedlist(10)
