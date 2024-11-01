@@ -177,11 +177,6 @@ class EmptyLinkedlist:
         self.tail=None
         self.length=0
 
-
-
-
-
-
 new_linkedlist=EmptyLinkedlist()
 
 new_linkedlist.append(10)
