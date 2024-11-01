@@ -6,6 +6,7 @@ class Node:
         self.value=value
         self.next=None
 
+    # This method would help in printing the value of a object if it is called by the object
     def __str__(self):
         return str(self.value)
 
