@@ -92,5 +92,32 @@ def insertNode(rootnode,newNode):
         return "Successfully Inserted"
 
 
+
+    def getDeepestNode(rootNode):
+        if not rootnode:
+            return
+        else:
+            customequeue = queue_ds.Queue()
+            customequeue.enqueue(rootNode)
+            while not (customequeue.isEmpty()):
+                root = customequeue.dequeue()
+                print(root.value.data)
+                if root.value.leftchild is not None:
+                    customequeue.enqueue(root.value.leftchild)
+                if root.value.rightchild is not None:
+                    customequeue.enqueue(root.value.rightchild)
+        deepestNode=root.value
+        return deepestNode
+
+
+    def deleteDeepestNode(rootNode,dnode):
+        if not rootNode:
+            return
+        else:
+
+
+
+
+
 levelOrderTraversal(drinks)
 print(insertNode(drinks,"cola"))
