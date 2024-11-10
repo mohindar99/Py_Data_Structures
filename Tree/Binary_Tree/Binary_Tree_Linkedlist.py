@@ -8,21 +8,20 @@ class TreeNode:
 
 # Creating the node to keep in the BT
 drinks = TreeNode("Drinks")
-hot=TreeNode("Hot")
-cold=TreeNode("Cold")
+hot = TreeNode("Hot")
+cold = TreeNode("Cold")
 tea = TreeNode("Tea")
 coffee = TreeNode("Coffee")
 alcohol = TreeNode("Alcohol")
 NON_alcohol = TreeNode("Non_Alcohol")
 
-
 # Linking the nodes to the specific rootnodes
-drinks.leftchild=hot
-drinks.rightchild=cold
-hot.leftchild=tea
-hot.rightchild=coffee
-cold.leftchild=alcohol
-cold.rightchild=NON_alcohol
+drinks.leftchild = hot
+drinks.rightchild = cold
+hot.leftchild = tea
+hot.rightchild = coffee
+cold.leftchild = alcohol
+cold.rightchild = NON_alcohol
 
 
 def preOrderTraversal(rootNode):
@@ -54,6 +53,7 @@ def levelOrderTraversal(rootNode):
             if root.value.rightchild is not None:
                 customequeue.enqueue(root.value.rightchild)
 
+print(levelOrderTraversal(drinks))
 
 def searchBT(rootnode,nodeValue):
     if not rootnode:
@@ -93,31 +93,76 @@ def insertNode(rootnode,newNode):
 
 
 
-    def getDeepestNode(rootNode):
-        if not rootnode:
-            return
-        else:
-            customequeue = queue_ds.Queue()
-            customequeue.enqueue(rootNode)
-            while not (customequeue.isEmpty()):
-                root = customequeue.dequeue()
-                print(root.value.data)
-                if root.value.leftchild is not None:
-                    customequeue.enqueue(root.value.leftchild)
-                if root.value.rightchild is not None:
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return
+    else:
+        customequeue = queue_ds.Queue()
+        customequeue.enqueue(rootNode)
+        while not (customequeue.isEmpty()):
+            root = customequeue.dequeue()
+            if root.value.leftchild is not None:
+                customequeue.enqueue(root.value.leftchild)
+            if root.value.rightchild is not None:
+                customequeue.enqueue(root.value.rightchild)
+    deepestNode=root.value
+    return deepestNode
+
+
+def deleteDeepestNode(rootNode,dnode):
+    if not rootNode:
+        return
+    else:
+        customequeue = queue_ds.Queue()
+        customequeue.enqueue(rootNode)
+        while not (customequeue.isEmpty()):
+            root = customequeue.dequeue()
+            if root.value is dnode:
+                root.value=None
+                return
+            if root.value.rightchild is not None:
+                if root.value.rightchild is dnode:
+                    root.value.rightchild=None
+                    return
+                else:
                     customequeue.enqueue(root.value.rightchild)
-        deepestNode=root.value
-        return deepestNode
+            if root.value.leftchild is not None:
+                if root.value.leftchild is dnode:
+                    root.value.leftchild = None
+                    return
+                else:
+                    customequeue.enqueue(root.value.leftchild)
 
 
-    def deleteDeepestNode(rootNode,dnode):
-        if not rootNode:
-            return
-        else:
+def deleteNodeBT(rootNode,node):
+    if not rootNode:
+        return "The BT does not exists"
+    else:
+        customequeue = queue_ds.Queue()
+        customequeue.enqueue(rootNode)
+        while not (customequeue.isEmpty()):
+            root = customequeue.dequeue()
+            if root.value.data==node:
+                dnode=getDeepestNode(rootNode)
+                root.value.data=dnode.data
+                deleteDeepestNode(rootNode,dnode)
+                return "The node had been successfully deleted"
+
+            if root.value.leftchild is not None:
+                customequeue.enqueue(root.value.leftchild)
+            if root.value.rightchild is not None:
+                customequeue.enqueue(root.value.rightchild)
+    return "Failed to delete"
 
 
 
+def deleteBT(rootnode):
+    rootnode.data=None
+    rootnode.leftchild=None
+    rootnode.rightchild=None
+    return "The BT had been deleted successfully"
 
-
-levelOrderTraversal(drinks)
-print(insertNode(drinks,"cola"))
+# print(levelOrderTraversal(drinks))
+# print(levelOrderTraversal(drinks))
+# print(deleteBT(drinks))
+# print(levelOrderTraversal(drinks))
