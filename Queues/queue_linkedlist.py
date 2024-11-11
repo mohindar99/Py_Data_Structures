@@ -71,14 +71,6 @@ class Queue:
 
 
 custqueue=Queue()
-custqueue.enqueue(23)
-custqueue.enqueue(24)
-custqueue.enqueue(25)
-custqueue.enqueue(26)
-custqueue.enqueue(27)
-print(custqueue)
-print(custqueue.dequeue())
-print(custqueue)
 
 
 
