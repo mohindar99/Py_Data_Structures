@@ -4,7 +4,6 @@ from re import search
 import Queues.queue_linkedlist as queue
 
 
-
 class BSTNode:
     def __init__(self,data):
         self.data=data
