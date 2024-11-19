@@ -36,6 +36,7 @@
 # car['Year']=2010
 # print(x)
 
-sam={'a':[2,3,4,5,6],'b':[34,34,3,43],'c':[1,2,3,4,5,6]}
-for i in list(sam):
-    print(i)
+# sam={'a':2323,'b':456,'c':9874}
+# val=sam.pop('a')
+# print(val)
+# print(sam)

@@ -1,5 +1,3 @@
-
-
 class Graph:
     def __init__(self,gdict=None):
         if gdict is None:
@@ -40,34 +38,19 @@ class Graph:
             return True
         return False
 
-# This is the method used to traverse the graph
-    def BFS(self,vertex):
-        visited=set()
-        visited.add(vertex)
-        queue=[vertex]
+
+    def bfs_ssp(self,start,end):
+        queue=[[start]]
         while queue:
-            curr=queue.pop(0)
-            print(curr)
-            for adj in self.gdict[curr]:
-                if adj not in visited :
-                    visited.add(adj)
-                    queue.append(adj)
-
-
-    def DFS(self,vertex):
-        visited=set()
-        stack=[vertex]
-        while stack:
-            curr=stack.pop()
-            if curr not in visited:
-                print(curr)
-                visited.add(curr)
-
-            for adj in self.gdict[curr]:
-                if adj not in visited:
-                    stack.append(adj)
-
-
+            path=queue.pop(0)
+            node=path[-1]
+            if node==end:
+                return path
+            else:
+                for i in self.gdict[node]:
+                    new_path=list(path)
+                    new_path.append(i)
+                    queue.append(new_path)
 
 
 
