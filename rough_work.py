@@ -40,3 +40,17 @@
 # val=sam.pop('a')
 # print(val)
 # print(sam)
+
+def fibutill(n):
+    if n==1:
+        return 0
+    if n==2:
+        return 1
+    else:
+        return fibutill(n-1)+fibutill(n-2)
+
+def fib(n):
+    for i in range(1,n+1):
+        print(fibutill(i))
+
+fib(4)
