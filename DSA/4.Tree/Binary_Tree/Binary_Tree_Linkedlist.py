@@ -43,7 +43,7 @@ def levelOrderTraversal(rootNode):
     if not rootNode:
         return
     else:
-        customequeue=queue_ds.Queue()
+        customequeue= queue_ds.Queue()
         customequeue.enqueue(rootNode)
         while not(customequeue.isEmpty()):
             root=customequeue.dequeue()

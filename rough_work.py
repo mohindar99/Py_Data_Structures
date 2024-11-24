@@ -40,17 +40,33 @@
 # val=sam.pop('a')
 # print(val)
 # print(sam)
+import heapq
+from platform import mac_ver
 
-def fibutill(n):
-    if n==1:
+
+# Output: 4
+
+
+def even(arr):
+    arr1=[i for i in arr if i%2==0]
+    if not arr1 :
         return 0
-    if n==2:
-        return 1
     else:
-        return fibutill(n-1)+fibutill(n-2)
+        return max(arr1)
 
-def fib(n):
-    for i in range(1,n+1):
-        print(fibutill(i))
+def getMinOperations(CT):
+    count=0
+    while True:
+        max_val=even(CT)
+        if max_val==0:
+            break
+        for i in range(len(CT)):
+            if CT[i]==max_val:
+                CT[i]=CT[i]/2
+        count+=1
+    return count
 
-fib(4)
+# Example usage:
+n = 4
+computationalTime = [2,4,8,16]
+print(getMinOperations(computationalTime))  # Output: 4
